@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detector de Força Bruta</title>
+<style>
+  :root {
+    --fundo: #0f172a;
+    --cartao: #1e293b;
+    --texto: #e2e8f0;
+    --destaque: #38bdf8;
+    --alerta: #ef4444;
+    --ok: #22c55e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px 16px;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  main { max-width: 800px; margin: 0 auto; }
+  h1 { color: var(--destaque); margin-bottom: 4px; }
+  .sub { color: #94a3b8; margin-top: 0; }
+  .resumo { display: flex; gap: 16px; margin: 24px 0; flex-wrap: wrap; }
+  .caixa {
+    flex: 1;
+    min-width: 180px;
+    background: var(--cartao);
+    padding: 20px;
+    border-radius: 12px;
+  }
+  .caixa .numero { font-size: 2.4rem; font-weight: bold; }
+  .caixa.suspeitos .numero { color: var(--alerta); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--cartao);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th, td { padding: 14px 16px; text-align: left; }
+  th { background: #334155; }
+  tr.alerta td { border-left: 4px solid var(--alerta); }
+  tr.ok td { border-left: 4px solid var(--ok); }
+  .selo { font-weight: bold; }
+  tr.alerta .selo { color: var(--alerta); }
+  tr.ok .selo { color: var(--ok); }
+  footer { margin-top: 24px; color: #64748b; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>🛡️ Detector de Força Bruta</h1>
+  <p class="sub">Relatório de tentativas de login falhas</p>
+
+  <section class="resumo">
+    <div class="caixa">
+      <div>IPs analisados</div>
+      <div class="numero">3</div>
+    </div>
+    <div class="caixa suspeitos">
+      <div>IPs suspeitos</div>
+      <div class="numero">1</div>
+    </div>
+  </section>
+
+  <table>
+    <tr>
+      <th>IP</th>
+      <th>Falhas</th>
+      <th>Usuários testados</th>
+      <th>Status</th>
+    </tr>
+    <tr class="alerta"><td>192.168.1.50</td><td>6</td><td>admin, root</td><td class="selo">ALERTA</td></tr>
+    <tr class="ok"><td>192.168.1.20</td><td>1</td><td>maria</td><td class="selo">OK</td></tr>
+    <tr class="ok"><td>10.0.0.7</td><td>1</td><td>joao</td><td class="selo">OK</td></tr>
+
+  </table>
+
+  <footer>Limite de alerta: 5 falhas por IP.</footer>
+</main>
+</body>
+</html>
